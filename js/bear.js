@@ -1,39 +1,28 @@
-export class Bear {
-  constructor(name) {
-    this.name = name;
-    this.foodLevel = 10;
-  }
-
-  setHunger() {
+export let bear = {
+  foodLevel: 10,
+  setHunger: function() {
     const hungerInterval = setInterval(() => {
       this.foodLevel--;
-      if(this.didYouGetEaten() == true) {
+      if (this.didYouGetEaten() == true) {
         clearInterval(hungerInterval);
         return "You got eaten!";
       }
     }, 1000);
-  }
-
-  didYouGetEaten() {
+  },
+  didYouGetEaten: function() {
     if (this.foodLevel > 0) {
       return false;
     } else {
       return true;
     }
-  }
-
-  // learn fat arrow notation for this?
-  feed(amount) {
-    console.log("hello. this is the inside of feed.")
+  },
+  feed: function(amount) {
     let that = this;
-    return customFeed(food) {
-      console.log("hello. this is the inner inside of feed.")
-      that.foodLevel += amount;
-      return `The bear ate the ${food}! Food level goes up by ${amount}!`;
-    };
+    return function(food) {
+      that.foodLevel += amount
+      return `The bear ate the ${food}! Food level goes up ${amount}!`
+    }
   }
+};
 
-  eatSmall() {
-    this.feed(5);
-  }
-}
+bear.eatSmall = bear.feed(5);
