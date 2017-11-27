@@ -1,14 +1,14 @@
-import { bear } from './../js/bear.js';
+import { Bear } from './../js/bear.js';
 
-describe('bear', function() {
-  let fuzzy = bear;
+describe('Bear', function() {
+  let fuzzy;
 
   beforeEach(function() {
+    fuzzy = new Bear("Fuzzy");
     jasmine.clock().install();
-    fuzzy.foodLevel = 10;
-    fuzzy.name = "Fuzzy";
     fuzzy.setHunger();
   });
+
   afterEach(function() {
     jasmine.clock().uninstall();
   });
